@@ -1,6 +1,6 @@
 # 🌦️ PlouTerreta - Comunidad Valenciana
 
-Bienvenido a **Weather App** 🌞, tu herramienta para estar siempre al tanto del tiempo en la Comunidad Valenciana, España. Consulta información meteorológica en tiempo real y recibe alertas sobre posibles fenómenos climáticos adversos.
+Bienvenido a **PlouTerreta App** 🌞, tu herramienta para estar siempre al tanto del tiempo en la Comunidad Valenciana, España. Consulta información meteorológica en tiempo real y recibe alertas sobre posibles fenómenos climáticos adversos.
 
 ## 📋 Funcionalidades
 
@@ -53,4 +53,4 @@ Este proyecto se distribuye bajo la Licencia MIT. 📄
 
 ---
 
-Gracias por visitar **Weather App** 🌍☁️. ¡Esperamos que te sea de utilidad para estar al tanto del clima en la Comunidad Valenciana!
+Gracias por visitar **PlouTerreta App** 🌍☁️. ¡Esperamos que te sea de utilidad para estar al tanto del clima en la Comunidad Valenciana!
