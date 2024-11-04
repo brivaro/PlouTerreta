@@ -21,7 +21,7 @@ Con esta app, podrás consultar:
 
 1. **Clona el repositorio**:
    ```bash
-   git clone https://github.com/tu-usuario/weather_app.git
+   git clone https://github.com/brivaro/PlouTerreta
    ```
 
 2. **Instala las dependencias**:
