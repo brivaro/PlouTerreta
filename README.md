@@ -36,8 +36,8 @@ Con esta app, podrás consultar:
 
 ## 🌐 Estructura del Repositorio
 
-- **📁 modules**: Contiene scripts para obtener y procesar datos de la API.
-- **📁 ui**: Componentes de interfaz en Streamlit, incluyendo archivos de estilos CSS.
+- **📁 app**: Contiene scripts para obtener y procesar datos de la API, visualización de los datos obtenidos y componentes de interfaz en Streamlit.
+- **📁 static**: Archivos de estilos CSS.
 - **main.py**: Archivo principal para ejecutar la aplicación.
 - **README.md**: Archivo de presentación del proyecto.
 - **requirements.txt**: Dependencias necesarias para ejecutar el proyecto.
