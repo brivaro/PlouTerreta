@@ -2,3 +2,4 @@ streamlit
 requests           # Para acceder a la API
 plotly             # Para gráficos interactivos
 pandas             # Para el procesamiento de datos
+python-dotenv	   # Para la api key
