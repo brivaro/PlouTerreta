@@ -8,7 +8,7 @@ from app.ui_components import show_weather_data
 municipios = [
     "Alaquàs", "Aldaia", "Algemesí", "Alzira", "Burjassot", "Catarroja", 
     "Gandia", "Manises", "Mislata", "Oliva", "Ontinyent", "Paiporta", 
-    "Paterna", "Quart de Poblet", "Sagunto/Sagunt", "Sueca", "Torrent", 
+    "Paterna", "Quart de Poblet", "Sagunt/Sagunto", "Sueca", "Torrent", 
     "València", "Xàtiva", "Xirivella"
 ]
 

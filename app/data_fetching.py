@@ -98,16 +98,18 @@ def get_codigo_municipio(selected_municipio):
 
         # Leer el archivo Excel
         df = pd.read_excel('municipios.xlsx', header=1)  # La fila 2 tiene los nombres de las columnas
-        #print(selected_municipio)
+        print(selected_municipio)
 
         # Buscar el municipio en el DataFrame
         municipio_data = df[df['NOMBRE'] == selected_municipio]
-        #print(municipio_data)
+        print(municipio_data)
 
         if not municipio_data.empty:
             # Retornar el código del municipio, asegurándose de que CPRO y CMUN son strings
             cpro = str(municipio_data['CPRO'].values[0]).zfill(2)  # Asegurarse de que CPRO tiene al menos 2 dígitos
             cmun = str(municipio_data['CMUN'].values[0]).zfill(3)  # Asegurarse de que CMUN tiene al menos 3 dígitos
+            print(cpro)
+            print(cmun)
             return f"{cpro}{cmun}"  # Combinar CPRO y CMUN
         else:
             return None
