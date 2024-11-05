@@ -63,6 +63,34 @@ def extract_precipitation(data):
 
     return precipitation_data
 
+def extract_storm_probabilities(data):
+    """Extrae la probabilidad de tormenta por periodo de cada hora, dividiendo los periodos en horas individuales."""
+    storm_data = {}
+
+    for day in data:
+        day_data = {}
+        periods = day.get("probTormenta", [])
+        fecha = day["fecha"]  # Usa la fecha como clave principal
+
+        # Si hay periodos, procesa cada uno
+        if periods:
+            for period in periods:
+                if "periodo" in period:
+                    period_key = period["periodo"]
+                    # Extrae las horas de la clave del periodo
+                    start_hour = int(period_key[:2])
+                    end_hour = int(period_key[2:])  # Suponiendo que el periodo tiene formato HHMM
+
+                    # Itera sobre cada hora en el rango y asigna el valor
+                    for hour in range(start_hour, end_hour + 1):  # +1 para incluir la última hora
+                        hour_key = f"{hour:02d}"  # Formato de dos dígitos
+                        day_data[hour_key] = {"value": period.get("value", None)}
+
+        # Agrega el diccionario del día completo usando la fecha como clave
+        storm_data[fecha] = day_data
+
+    return storm_data
+
 def extract_weather_conditions(data):
     """Extrae la descripción de las condiciones del cielo por periodo de cada hora."""
     weather_conditions_data = {}
@@ -131,6 +159,7 @@ def process_weather_data(data):
     precipitation_data = extract_precipitation(data)
     weather_conditions_data = extract_weather_conditions(data)
     wind_data = extract_wind_data(data)
+    storm_data = extract_storm_probabilities(data)
 
     # Lista para almacenar todas las filas antes de convertir a DataFrame
     rows = []
@@ -149,6 +178,7 @@ def process_weather_data(data):
                 "sky_description": weather_conditions_data.get(fecha, {}).get(period_key, {}).get("descripcion", "N/A"),
                 "wind_direction": wind_data.get(fecha, {}).get(period_key, {}).get("direccion", "N/A"),
                 "wind_speed": wind_data.get(fecha, {}).get(period_key, {}).get("velocidad", 0),
+                "storm_probability": storm_data.get(fecha, {}).get(period_key, {}).get("value", 0),
                 # Crear una columna de fecha y hora combinada
                 "fecha_hora": pd.to_datetime(fecha + ' ' + period_key + ':00')
             }

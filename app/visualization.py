@@ -59,6 +59,47 @@ def plot_rain_chance(data):
     # Mostrar el gráfico en la aplicación Streamlit
     st.plotly_chart(fig)
 
+
+def plot_storm_chance(data):
+    """Genera un gráfico de probabilidad de tormenta por fecha y hora con anotaciones de emoticonos."""
+    # Preparar los datos para el gráfico
+    fig = px.line(data,
+                  x='fecha_hora',
+                  y='storm_probability',
+                  labels={'precipitation_value': 'Probabilidad (%)'},
+                  markers=True)
+
+    # Definir los niveles de probabilidad de tormenta con emoticonos correspondientes
+    emoji_levels = {
+        0: "☀️",  # Soleado, sin tormenta
+        20: "🌤️",  # Baja probabilidad de tormenta
+        40: "⛈️",  # Probabilidad moderada de tormenta
+        60: "🌩️",  # Alta probabilidad de tormenta
+        80: "⚡",   # Muy alta probabilidad de tormenta
+        100: "🌪️"  # Tormenta severa
+    }
+
+    # Añadir anotaciones con emoticonos según el nivel de probabilidad
+    for level, emoji in emoji_levels.items():
+        fig.add_annotation(
+            xref="paper", yref="y",
+            x=1.05, y=level,  # Ajustar posición de los emojis al lado derecho
+            text=emoji,
+            showarrow=False,
+            font=dict(size=14)
+        )
+
+    # Configurar diseño del gráfico
+    fig.update_layout(
+        yaxis_title="Probabilidad de Tormenta (%)",
+        xaxis_title="Fecha y Hora",
+        margin=dict(r=100)  # Espacio adicional para las anotaciones
+    )
+
+    # Mostrar el gráfico en la aplicación Streamlit
+    st.plotly_chart(fig)
+
+
 def plot_weather_conditions(data):
     """Genera un gráfico de condiciones del cielo por fecha y hora."""
     # Crear una figura de Plotly
