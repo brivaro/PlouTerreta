@@ -16,7 +16,7 @@ def get_today_precipitation_data(weather_df):
     """Obtiene la precipitación máxima del día actual."""
     today = datetime.now().date()
     today_data = weather_df[weather_df['fecha_hora'].dt.date == today]
-    today_data['precipitation_value'] = pd.to_numeric(today_data['precipitation_value'], errors='coerce')
+    today_data.loc[:,'precipitation_value'] = pd.to_numeric(today_data['precipitation_value'], errors='coerce')
 
     if not today_data.empty:
         lluvia_max = today_data['precipitation_value'].max()
@@ -29,7 +29,7 @@ def get_today_storm_data(weather_df):
     """Obtiene la probabilidad de tormenta y la hora de inicio de la tormenta del día actual."""
     today = datetime.now().date()
     today_data = weather_df[weather_df['fecha_hora'].dt.date == today]
-    today_data['storm_probability'] = pd.to_numeric(today_data['storm_probability'], errors='coerce')  # Suponiendo que hay una columna 'storm_chance'
+    today_data.loc[:,'storm_probability'] = pd.to_numeric(today_data['storm_probability'], errors='coerce')  # Suponiendo que hay una columna 'storm_chance'
 
     if not today_data.empty:
         tormenta_max = today_data['storm_probability'].max()
@@ -43,8 +43,8 @@ def get_next_day_data(weather_df):
     """Obtiene los datos del día siguiente."""
     next_day = datetime.now() + timedelta(days=1)
     next_day_data = weather_df[weather_df['fecha_hora'].dt.date == next_day.date()]
-    next_day_data['precipitation_value'] = pd.to_numeric(next_day_data['precipitation_value'], errors='coerce')
-    next_day_data['storm_probability'] = pd.to_numeric(next_day_data['storm_probability'], errors='coerce')
+    next_day_data.loc[:,'precipitation_value'] = pd.to_numeric(next_day_data['precipitation_value'], errors='coerce')
+    next_day_data.loc[:, 'storm_probability'] = pd.to_numeric(next_day_data['storm_probability'], errors='coerce')
 
     if not next_day_data.empty:
         temp_max_next = next_day_data['temperature_max'].max()
@@ -97,10 +97,10 @@ def show_weather_data(weather_df):
             st.metric("🌀 Viento Actual", f"{viento_actual} km/h")
             st.metric("🌞 Condición Actual", condicion_actual)
             #st.metric("☔ Máxima Probabilidad de Lluvia", f"{lluvia_actual_max}%")
-            if lluvia_actual_max is not 0:
+            if lluvia_actual_max != 0:
                 st.metric("☔🕒 Inicio de Lluvia", lluvia_hora_inicio)
             #st.metric("⚡ Máxima Probabilidad de Tormenta", f"{tormenta_actual_max}%")
-            if tormenta_actual_max is not 0:
+            if tormenta_actual_max != 0:
                 st.metric("⚡🕒 Inicio de Tormenta", tormenta_hora_inicio)
             
 
@@ -115,10 +115,10 @@ def show_weather_data(weather_df):
                 st.metric("🌀 Viento Máximo", f"{viento_max_next} km/h")
                 st.metric("🌞 Condición Máxima", condicion_max_sky_value)  # Condición del cielo con mayor sky_value
                 #st.metric("☔ Máxima Probabilidad de Lluvia", f"{lluvia_max_next}%")
-                if lluvia_max_next is not 0:
+                if lluvia_max_next != 0:
                     st.metric("☔🕒 Inicio de Lluvia", f"{lluvia_hora_inicio}")
                 #st.metric("⚡ Máxima Probabilidad de Tormenta", f"{tormenta_max_next}%")
-                if tormenta_max_next is not 0:
+                if tormenta_max_next != 0:
                     st.metric("⚡🕒 Inicio de Tormenta", f"{tormenta_hora_inicio_next}")
                 
             else:
