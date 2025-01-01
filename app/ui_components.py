@@ -112,14 +112,14 @@ def show_weather_data(weather_df):
                 
                 st.metric("🔥 Temperatura Máxima", f"{temp_max_next}°C")
                 st.metric("❄️ Temperatura Mínima", f"{temp_min_next}°C")
-                st.metric("☔ Máxima Probabilidad de Lluvia", f"{lluvia_max_next}%")
-                if lluvia_max_next is not 0:
-                    st.metric("🕒 Inicio de Lluvia", f"{lluvia_hora_inicio}")
-                st.metric("⚡ Máxima Probabilidad de Tormenta", f"{tormenta_max_next}%")
-                if tormenta_max_next is not 0:
-                    st.metric("🕒 Inicio de Tormenta", f"{tormenta_hora_inicio_next}")
                 st.metric("🌀 Viento Máximo", f"{viento_max_next} km/h")
                 st.metric("🌞 Condición Máxima", condicion_max_sky_value)  # Condición del cielo con mayor sky_value
+                #st.metric("☔ Máxima Probabilidad de Lluvia", f"{lluvia_max_next}%")
+                if lluvia_max_next is not 0:
+                    st.metric("☔🕒 Inicio de Lluvia", f"{lluvia_hora_inicio}")
+                #st.metric("⚡ Máxima Probabilidad de Tormenta", f"{tormenta_max_next}%")
+                if tormenta_max_next is not 0:
+                    st.metric("⚡🕒 Inicio de Tormenta", f"{tormenta_hora_inicio_next}")
                 
             else:
                 st.warning("No hay datos disponibles para el día siguiente.")
