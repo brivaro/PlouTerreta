@@ -75,7 +75,7 @@ def show_weather_data(weather_df):
         col1, col2 = st.columns([2, 2])  # Ajustar el ancho de las columnas
 
         with col1:
-            st.subheader("📝 Pronóstico para Hoy")
+            st.header("📝 Pronóstico para Hoy")
 
             # Datos actuales
             temp_actual = get_closest_data(weather_df, 'temperature_value')
@@ -93,22 +93,23 @@ def show_weather_data(weather_df):
             st.metric("🔥 Temperatura Máxima", f"{temp_max}°C")
             st.metric("❄️ Temperatura Mínima", f"{temp_min}°C")
             st.metric("☔ Lluvia Actual", f"{lluvia_actual}%")
-            st.metric("☔ Máxima Probabilidad de Lluvia", f"{lluvia_actual_max}%")
-            if lluvia_actual_max is not 0:
-                st.metric("🕒 Inicio de Lluvia", lluvia_hora_inicio)
             st.metric("⚡ Tormenta Actual", f"{tormenta_actual}%")
-            st.metric("⚡ Máxima Probabilidad de Tormenta", f"{tormenta_actual_max}%")
-            if tormenta_actual_max is not 0:
-                st.metric("🕒 Inicio de Tormenta", tormenta_hora_inicio)
             st.metric("🌀 Viento Actual", f"{viento_actual} km/h")
             st.metric("🌞 Condición Actual", condicion_actual)
+            #st.metric("☔ Máxima Probabilidad de Lluvia", f"{lluvia_actual_max}%")
+            if lluvia_actual_max is not 0:
+                st.metric("☔🕒 Inicio de Lluvia", lluvia_hora_inicio)
+            #st.metric("⚡ Máxima Probabilidad de Tormenta", f"{tormenta_actual_max}%")
+            if tormenta_actual_max is not 0:
+                st.metric("⚡🕒 Inicio de Tormenta", tormenta_hora_inicio)
             
 
         with col2:
             # Datos del día siguiente
             temp_max_next, temp_min_next, lluvia_max_next, lluvia_hora_inicio, condicion_max_sky_value, viento_max_next, tormenta_max_next, tormenta_hora_inicio_next = get_next_day_data(weather_df)
             if temp_max_next is not None:
-                st.subheader("📅 Pronóstico para Mañana")
+                st.header("📅 Pronóstico para Mañana")
+                
                 st.metric("🔥 Temperatura Máxima", f"{temp_max_next}°C")
                 st.metric("❄️ Temperatura Mínima", f"{temp_min_next}°C")
                 st.metric("☔ Máxima Probabilidad de Lluvia", f"{lluvia_max_next}%")

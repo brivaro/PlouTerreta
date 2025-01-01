@@ -21,7 +21,7 @@ def main():
         initial_sidebar_state="expanded"  # Opciones: "auto", "expanded", "collapsed"
     )
 
-    st.sidebar.title("Parámetros")
+    st.sidebar.title("Municipio")
     
     # Establecer 'Quart de Poblet' como municipio predeterminado
     selected_municipio = st.sidebar.selectbox("Selecciona un municipio:", municipios, index=13)  # Índice 13 corresponde a Quart de Poblet

@@ -19,20 +19,30 @@ Con esta app, podrás consultar:
 
 ## 🚀 Cómo ejecutar el proyecto
 
-1. **Clona el repositorio**:
+1. **Crea tu cuenta en AEMET OpenData** para obtener una **API Key**. Puedes hacerlo desde [este enlace](https://opendata.aemet.es/).
+   
+2. **Clona el repositorio**:
    ```bash
    git clone https://github.com/brivaro/PlouTerreta
    ```
 
-2. **Instala las dependencias**:
+3. **Instala las dependencias**:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Ejecuta la app**:
+4. **Configura la API Key**: 
+   - Crea un archivo `.env` dentro de la carpeta **app** y agrega el parámetro `AEMET_API_KEY` con el valor de tu clave de API obtenida.
+   - Ejemplo de archivo `.env`:
+     ```env
+     AEMET_API_KEY=tu_api_key_aqui
+     ```
+
+5. **Ejecuta la app**:
    ```bash
    streamlit run main.py
    ```
+
 
 ## 🌐 Estructura del Repositorio
 
